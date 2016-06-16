@@ -82,13 +82,12 @@ static KISSMetricsAPI *sharedAPI = nil;
 
 + (KISSMetricsAPI *)sharedAPIWithKey:(NSString *)apiKey
 {
-    static KISSMetricsAPI *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[KISSMetricsAPI alloc] init];
+        sharedAPI = [[KISSMetricsAPI alloc] init];
         [sharedAPI initializeAPIWithKey:apiKey];
     });
-    return sharedInstance;
+    return sharedAPI;
 }
 
 
